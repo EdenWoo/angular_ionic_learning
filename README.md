@@ -9,3 +9,7 @@
       });
       $cookies.remove(itemKey);
     }
+#iterate all the key value pairs in array
+    angular.forEach(cookies, function (v, k) {
+      $scope.keys.push(v);
+    });
