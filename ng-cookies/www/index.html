@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <script src="./lib/angular-cookies/angular-cookies.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="AppCtrl">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">Ionic Blank Starter</h1>
+        <p>Angularjs tutorials step by step for beginners -Using $cookieStore Services</p>
+      </ion-header-bar>
+      <ion-content>
+      <button ng-ckick="refresh()">refresh</button>
+      <hr/>
+      <p>Key: <input type="text" ng-model="itemKey"> </p>
+      <p>value: <input type="text" ng-model="itemValue"> </p>
+      <p> <button ng-click="addItem(itemKey,itemValue)">add Item</button> </p>
+      <hr/>
+      <p>
+        Get Item
+        <input type="text" ng-model="getKey">
+        <button ng-click="getItem(getKey)"> Get Item</button>
+      </p>
+      <hr/>
+        <p>
+        Remove Item
+        <input type="text" ng-model="removeKey">
+        <button ng-click="removeItem(removeKey)"> Remove</button>
+      </p>
+      <p>
+        <ul>
+          <li ng-repeat="key in keys track by $index">
+            {{key}}:{{getItemValue(key)}}
+          </li>
+        </ul>
+        <hr/>
+        <p>Current Item:</p>
+        <p>{{currentItem}}</p>
+
+
+      </p>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
