@@ -17,21 +17,7 @@
 
 #$resource service
 
-angular.module('starter')
- //--------------------test resource BEGIN-------------------------
- .factory('ResourceService', function($resource){
-  //$resource(url, paramDefaults, actions)
-  return $resource(             
-    'http://jsonplaceholder.typicode.com/users/:id',
-    {id:'@id'}, 
-    { 
-      //this method issues a PUT request
-      update: { method: 'PUT'}
-    });
-})
-
-//consume the service.
-.controller('ProfileCtrl', function ($scope, ResourceService) {
+.controller('ProfileCtrl', function ($scope, UserService, ResourceService) {
     console.log("testService BEGIN");
     ResourceService.query(function (result) {
         console.log(result);
