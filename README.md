@@ -50,3 +50,21 @@
    $scope.data = UserInfoService.getInfo();
   
  
+#rootscope 广播
+Instead of having your menu in $rootScope, you could use event to warn your menu that the user has logged in and that he should reload itself.
+
+On LoginController
+
+$rootScope.$broadcast('userLoggedIn');
+On MainController
+
+$rootScope.$on('userLoggedIn', function () {
+    //Code to apply modification to your menu
+});
+If you have to pass parameters, you can use the second argument of $broadcast method like this :
+
+$rootScope.$broadcast('userLoggedIn', {key: 'value'});
+
+$rootScope.$on('userLoggedIn', function (params) {
+    console.log(params.key); //value
+});
