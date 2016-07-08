@@ -23,3 +23,30 @@
         console.log(result);
         $scope.datas = result;
     });
+    
+    
+#pass data use factory
+
+    //-------------------- Service BEGIN------------------
+//inspect all our http call,
+.factory('UserInfoService', function () {
+    var info = {};
+    
+    var setInfo=function(i){
+        info = i;
+    }
+    
+    var getInfo = function () {
+        return info;
+    }
+    return {
+        setInfo: setInfo,
+        getInfo:getInfo
+    };
+})
+ //-------------------- Service END------------------
+ 
+  UserInfoService.setInfo(info);
+   $scope.data = UserInfoService.getInfo();
+  
+ 
