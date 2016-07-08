@@ -16,6 +16,7 @@
 
 
 #$resource service
+
 angular.module('starter')
  //--------------------test resource BEGIN-------------------------
  .factory('ResourceService', function($resource){
