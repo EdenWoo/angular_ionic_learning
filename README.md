@@ -68,3 +68,71 @@ $rootScope.$broadcast('userLoggedIn', {key: 'value'});
 $rootScope.$on('userLoggedIn', function (params) {
     console.log(params.key); //value
 });
+
+
+#angular localstorage-ngstorage
+link:http://ngmodules.org/modules/ngStorage
+bower install ngstorage
+
+angular.module('app', [
+    'ngStorage'
+]).controller('Ctrl', function(
+    $scope,
+    $localStorage,
+    $sessionStorage
+){});
+
+set item:
+    $window.sessionStorage.setItem("isAuthenticated", true);
+set json item:
+ var image = document.getElementById('img'+id);
+        json = {
+          id: id,
+          img: image.src
+        }
+ $window.sessionStorage.setItem(id, JSON.stringify(json));
+
+iterate all the data in the sessionstorage
+     angular.forEach($window.sessionStorage, function (i, v) {
+         console.log("value: " + i);
+         console.log("item: " + v);
+    });
+
+
+
+window.addCart = function($scope, $http, $window, $document){
+  
+    var getValue = function(){
+        return $window.sessionStorage.length;
+    }
+      
+    var getData = function(){
+      var json = [];
+      $.each($window.sessionStorage, function(i, v){
+        json.push(angular.fromJson(v));
+      });
+      return json;
+    }
+      
+    $scope.images = getData();
+    $scope.count = getValue();
+  
+    $scope.addItem = function(id){
+        var image = document.getElementById('img'+id);
+        json = {
+          id: id,
+          img: image.src
+        }
+        $window.sessionStorage.setItem(id, JSON.stringify(json));
+        $scope.count = getValue();
+        $scope.images = getData();
+    }
+    
+    $scope.removeItem = function(id){
+      $window.sessionStorage.removeItem(id);
+      $document.
+      $scope.count = getValue();
+      $scope.images = getData();
+      alert('Removed with Success!');
+    }
+}
