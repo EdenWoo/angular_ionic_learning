@@ -378,3 +378,23 @@ $timeout.cancel(yourTimer);
 </body>
 </html>  
 ```
+
+
+# inoic nav view
+
+http://ionicframework.com/docs/api/directive/ionNavView/
+
+## Caching
+By default, views are cached to improve performance. When a view is navigated away from, its element is left in the DOM, and its scope is disconnected from the $watch cycle. When navigating to a view that is already cached, its scope is then reconnected, and the existing element that was left in the DOM becomes the active view. This also allows for the scroll position of previous views to be maintained.
+
+Caching can be disabled and enabled in multiple ways. By default, Ionic will cache a maximum of 10 views, and not only can this be configured, but apps can also explicitly state which views should and should not be cached.
+```
+var myApp = angular.module('reallyCoolApp', ['ionic']);
+
+myApp.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.views.maxCache(0);
+
+  // note that you can also chain configs
+  $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');
+});
+```
